@@ -1,0 +1,14 @@
+@mixin flexbox {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+@mixin box($width, $height) {
+   width: $width;
+   height: $height;
+   background: blue;
+   border: 1px solid #303481;
+}

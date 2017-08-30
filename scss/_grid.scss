@@ -1,0 +1,24 @@
+// jest na piratePad cj..
+.container{
+   width: 100%;
+   max-width: $gridContainerWidth;
+   margin: 0 auto;
+   .row{
+      // czyszczenie floatów
+      @extend %clearfix;
+      [class*='col-']{ //ustalenie szerokości kolumns dla mobile
+         width: 100%; // na mobilnych kazda kolumna ma miec 100%;
+         @media (min-width: $gridBreakPoint){
+            width: 100%/$gridColumns;
+            float: left;
+         }
+      }
+      @media (min-width: $gridBreakPoint){ // utworzenie szerokości kolumn dla tablet/desktop
+         @for $i from 1 through $gridColumns{ // stworzenie poszczegolnych klas
+            .col-#{$i}{ // #interpolacja
+               width: (100%/$gridColumns) * $i; //col-2 bedzie miec dwa razy szerokosc col-1
+            }
+         }
+      }
+   }
+}

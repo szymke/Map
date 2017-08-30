@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+// COMMON
+body {
+    background: #161C2E;
+    font-family: 'Raleway', sans-serif;
+    color: #161C2E;
+}
+
+path:hover {
+    fill: #EF6C35;
+}
+
+.tip {
+    fill: yellow;
+    position: relative;
+    cursor: pointer;
+}
+
+.tooltipText {
+    y: 20;
+    x: 10;
+    fill: hotpink;
+    font-size: 30px;
+    stroke: yellowgreen;
+    z-index: 2;
+}
+
+.fill{
+    fill: #EF6C35 !important;
+}
+
+.flag {
+    width: 80px;
+    height: 50px;
+}
+
+.container {
+    padding-top: 20px;
+}
+
+
+// SPECIFIC
+table {
+    border: 2px solid #EF6C35;
+    border-radius: 30px;
+    padding: 10px;
+    background: #2BB3C0;
+    margin: 50px auto;
+    width: 400px;
+    th {
+        border-bottom: 3px solid #EF6C35;
+        font-size: 25px;
+        padding: 15px;
+    }
+    td {
+        padding: 10px;
+        width: 50%;
+    }
+}
+
+form {
+    input {
+        position: relative;
+        top: 27px;
+        left: 0;
+        width: 150px;
+        background: #FAF7F2;
+        color: #161C2E;
+        border: 1px solid #EF6C35;
+        padding: 5px;
+    }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp {
+  animation-name: slideInUp;
+}
+
+.animated {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
