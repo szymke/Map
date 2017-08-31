@@ -52,23 +52,10 @@ body {
 .container {
   padding-top: 20px; }
 
-table {
-  margin: 50px auto; }
-
-table {
-  border: 2px solid #EF6C35;
-  border-radius: 30px;
-  padding: 10px;
-  background: #2BB3C0; }
-  table th {
-    border-bottom: 3px solid #EF6C35;
-    font-size: 25px;
-    padding: 15px; }
-  table td {
-    padding: 10px; }
-
-td {
-  width: 200px; }
+path:hover {
+  fill: #EF6C35;
+  stroke-width: 1px;
+  stroke: #DE5B24; }
 
 .fill {
   fill: #EF6C35 !important; }
@@ -77,134 +64,53 @@ td {
   width: 80px;
   height: 50px; }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
+table {
+  border-radius: 2rem;
+  padding: 10px;
+  background: #2BB3C0;
+  margin: 10px auto;
+  border-collapse: collapse; }
+  table th {
+    border-bottom: 5px solid #EF6C35;
+    font-size: 2rem;
+    padding: 10px; }
+  table td {
+    vertical-align: top;
+    width: 150px;
+    padding: 10px; }
 
-.fadeIn {
-  animation-name: fadeIn; }
+input {
+  width: 150px;
+  background: #FAF7F2;
+  color: #161C2E;
+  border: 1px solid #EF6C35;
+  padding: 5px; }
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
+.slideInUp {
+  animation-name: slideInUp; }
 
 .animated {
-  animation-duration: 1s;
+  animation-duration: 0.5s;
   animation-fill-mode: both; }
-
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+ty); };
 /******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 194);
+/******/ 	return __webpack_require__(__webpack_require__.s = 199);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 0:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Raleway);", ""]);
-
-// module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box; }\n\n.container .row::before, .container .row::after {\n  content: '';\n  display: block;\n  clear: both; }\n\n.container {\n  width: 100%;\n  max-width: 1010px;\n  margin: 0 auto; }\n  .container .row [class*='col-'] {\n    width: 100%; }\n    @media (min-width: 640px) {\n      .container .row [class*='col-'] {\n        width: 8.33333%;\n        float: left; } }\n  @media (min-width: 640px) {\n    .container .row .col-1 {\n      width: 8.33333%; }\n    .container .row .col-2 {\n      width: 16.66667%; }\n    .container .row .col-3 {\n      width: 25%; }\n    .container .row .col-4 {\n      width: 33.33333%; }\n    .container .row .col-5 {\n      width: 41.66667%; }\n    .container .row .col-6 {\n      width: 50%; }\n    .container .row .col-7 {\n      width: 58.33333%; }\n    .container .row .col-8 {\n      width: 66.66667%; }\n    .container .row .col-9 {\n      width: 75%; }\n    .container .row .col-10 {\n      width: 83.33333%; }\n    .container .row .col-11 {\n      width: 91.66667%; }\n    .container .row .col-12 {\n      width: 100%; } }\n\nbody {\n  background: #161C2E;\n  font-family: 'Raleway', sans-serif;\n  color: #161C2E; }\n\n.container {\n  padding-top: 20px; }\n\ntable {\n  margin: 50px auto; }\n\ntable {\n  border: 2px solid #EF6C35;\n  border-radius: 30px;\n  padding: 10px;\n  background: #2BB3C0; }\n  table th {\n    border-bottom: 3px solid #EF6C35;\n    font-size: 25px;\n    padding: 15px; }\n  table td {\n    padding: 10px; }\n\ntd {\n  width: 200px; }\n\n.fill {\n  fill: #EF6C35 !important; }\n\n.flag {\n  width: 80px;\n  height: 50px; }\n\n@keyframes fadeIn {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n.fadeIn {\n  animation-name: fadeIn; }\n\n.animated {\n  animation-duration: 1s;\n  animation-fill-mode: both; }\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 1:
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
-/***/ 194:
+/***/ 199:
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

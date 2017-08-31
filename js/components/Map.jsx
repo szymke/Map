@@ -2,7 +2,7 @@ import React from 'react';
 import ReactSVG from 'react-svg';
 import ReactAutocomplete from 'react-autocomplete';
 import Info from './Info.jsx';
-import Search from './Search.jsx';
+
 
 class Map extends React.Component{
     constructor(props){
@@ -127,7 +127,6 @@ class Map extends React.Component{
                                         this.editPaths(paths);
                                     }
                             }
-                            className="map"
                             style={{width: '1009px', height: '665px', background: '#161C2E',}}
                         />
                         {autoComplete}

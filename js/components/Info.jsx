@@ -13,7 +13,6 @@ class Info extends React.Component{
 
     render(){
         if(this.state.loaded === false || this.props.title === null || this.props.id === null){
-            console.log('api nie działa lub propsy są null');
             return null;
         }
 
@@ -36,44 +35,29 @@ class Info extends React.Component{
         return  <table className='info slideInUp animated'>
                     <thead>
                         <tr>
-                            <th colSpan={2}>{this.state.dataAPI.name}</th>
+                            <th colSpan={6}>{this.state.dataAPI.name}</th>
+                            <th colSpan={2}><img className='flag' src={this.state.dataAPI.flag} /></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Flag</td>
-                            <td><img className='flag' src={this.state.dataAPI.flag} /></td>
-                        </tr>
-                        <tr>
                             <td>Capital</td>
-                            <td>{this.state.dataAPI.capital}</td>
-                        </tr>
-                        <tr>
                             <td>Official languages</td>
-                            <td>{languages.join(', ')}</td>
-                        </tr>
-                        <tr>
                             <td>Alpha code</td>
-                            <td>{this.state.dataAPI.alpha2Code}</td>
-                        </tr>
-                        <tr>
                             <td>Population</td>
-                            <td>{this.state.dataAPI.population}</td>
-                        </tr>
-                        <tr>
                             <td>Currency</td>
-                            <td>{currencies.join(', ')}</td>
-                        </tr>
-                        <tr>
                             <td>Region</td>
-                            <td>{this.state.dataAPI.region}</td>
-                        </tr>
-                        <tr>
                             <td>Regional blocs</td>
-                            <td>{regionalBlocs.join(', ')}</td>
+                            <td>Timezones</td>
                         </tr>
                         <tr>
-                            <td>Timezones</td>
+                            <td>{this.state.dataAPI.capital}</td>
+                            <td>{languages.join(', ')}</td>
+                            <td>{this.state.dataAPI.alpha2Code}</td>
+                            <td>{this.state.dataAPI.population}</td>
+                            <td>{currencies.join(', ')}</td>
+                            <td>{this.state.dataAPI.region}</td>
+                            <td>{regionalBlocs.join(', ')}</td>
                             <td>{this.state.dataAPI.timezones.join(', ')}</td>
                         </tr>
                     </tbody>
