@@ -7,23 +7,14 @@ body {
     color: #161C2E;
 }
 
+.container {
+    padding-top: 20px;
+}
+
 path:hover {
     fill: #EF6C35;
-}
-
-.tip {
-    fill: yellow;
-    position: relative;
-    cursor: pointer;
-}
-
-.tooltipText {
-    y: 20;
-    x: 10;
-    fill: hotpink;
-    font-size: 30px;
-    stroke: yellowgreen;
-    z-index: 2;
+    stroke-width: 1px;
+    stroke: #DE5B24;
 }
 
 .fill{
@@ -35,8 +26,19 @@ path:hover {
     height: 50px;
 }
 
-.container {
-    padding-top: 20px;
+// .tip {
+//     fill: yellow;
+//     position: relative;
+//     cursor: pointer;
+// }
+
+.tooltipText {
+    // y: 20;
+    // x: 10;
+    fill: hotpink;
+    font-size: 30px;
+    stroke: yellowgreen;
+    // z-index: 2;
 }
 
 
@@ -59,17 +61,16 @@ table {
     }
 }
 
-form {
-    input {
-        position: relative;
-        top: 27px;
-        left: 0;
-        width: 150px;
-        background: #FAF7F2;
-        color: #161C2E;
-        border: 1px solid #EF6C35;
-        padding: 5px;
-    }
+
+input {
+    position: relative;
+    top: 27px;
+    left: 0;
+    width: 150px;
+    background: #FAF7F2;
+    color: #161C2E;
+    border: 1px solid #EF6C35;
+    padding: 5px;
 }
 
 @keyframes slideInUp {

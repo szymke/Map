@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactSVG from 'react-svg';
+import ReactAutocomplete from 'react-autocomplete';
 import Info from './Info.jsx';
 import Search from './Search.jsx';
 
@@ -9,20 +10,16 @@ class Map extends React.Component{
         this.state = {
             title: null,
             id: null,
+            countries: null,
+            value: '',
+            selected: '',
         };
-    }
-
-    handleInputChange = (path, title, newId) =>{
-        this.setState({
-            title: title,
-            id: newId,
-        });
     }
 
     handleMapClick = (e) =>{
         if(e.target === document.querySelector('svg')){
             return null;
-        }
+        };
         this.setState({
             title: e.target.getAttribute('title'),
             id: e.target.id,
@@ -38,44 +35,102 @@ class Map extends React.Component{
         }
     }
 
-    renamePathsIdTitle(paths){
-        paths.forEach( (path) => {
+    handleInputSearch = (e) => {
+        const title = e.target.value;
+        this.setState({value: title})
+        const path = document.querySelector('path[title="' + title.toLowerCase() + '"]');
+        if(path){
+            const id = path.getAttribute('id');
+            console.log(id);
+            this.setState({
+                id: id,
+                title: title.toLowerCase(),
+            });
+            if(path != null){
+                path.classList.add('fill');
+            };
+        }
+    }
+
+    handleOnSelect = (value) => {
+        const path = document.querySelector('path[title="' + value.toLowerCase() + '"]');
+        if(path){
+            const id = path.getAttribute('id');
+            this.setState({
+                id: id,
+                title: value,
+                value: value,
+            });
+            if(path != null){
+                path.classList.add('fill');
+            };
+        }
+    }
+
+    editPaths(paths){
+        paths.forEach((path) => {
             path.setAttribute("id", path.id.toLowerCase());
             path.setAttribute("title", path.getAttribute('title').toLowerCase());
-            path.classList.add('tip');
         });
+
+        if(this.state.countries === null) {
+            const pathsArr = [].slice.call(paths); // convert to array (paths is nodeList)
+            const ctrs = pathsArr.map(country => {
+                return {id: country.id, label: this.camel(country.getAttribute('title'))}
+            });
+            this.setState({countries: ctrs});
+        }
     }
 
-    tooltipOn = (event) => {
-        if(event.target.tagName === 'path'){
-            const text = document.createElement('text');
-            text.classList.add('tooltipText');
-            event.target.appendChild(text);
-            event.target.lastElementChild.innerHTML = 'Bardzo ciekawy tooltip';
-            // console.log(event.target);
-            // console.log(event.target.lastElementChild);
-        };
-    }
-
-    tooltipOff = (event) => {
-        if(event.target.lastElementChild.tagName === "text"){
-            event.target.removeChild(this.lastElementChild);
-        };
+    camel(str){
+        let words = str.split(' ');
+        const wordsUpper = words.map((elem, index) => {
+            return elem.charAt(0).toUpperCase() + elem.slice(1);
+        });
+        return wordsUpper.join(' ');
     }
 
     render(){
+        //<Search searchChange={this.handleInputChange}/>
+        //onChange={e => this.setState({ value: e.target.value })}
+        //onSelect={value => this.setState({ value: value, title: value})}
+        const autoComplete = (this.state.countries != null) ?
+        <ReactAutocomplete
+                    items={this.state.countries}
+                    shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
+                    getItemValue={item => item.label}
+                    inputProps={{placeholder: 'Search'}}
+                    renderItem={(item, highlighted) =>
+                      <div
+                        key={item.id}
+                        style={{
+                            backgroundColor: highlighted ? '#161C2E' : 'transparent',
+                            color: highlighted ? '#EF6C35' : '#161C2E',
+                            padding: '5px',
+                        }}>
+                        {item.label}
+                      </div>
+                    }
+                    value={this.state.value}
+                    onChange={this.handleInputSearch}
+                    onSelect={value => {this.handleOnSelect(value)}}
+                    /> : null;
+
+
         return  <div className='container'>
-                    <div className="row" onMouseOver={this.tooltipOn} onMouseOut={this.tooltipOff} onClick = {this.handleMapClick}>
-                        <Search searchChange={this.handleInputChange}/>
+                    <div className="row" onClick={this.handleMapClick}>
                         <ReactSVG
                             path="../images/worldHigh.svg"
                             callback={svg => {
-                                let paths = document.querySelectorAll('path');
-                                this.renamePathsIdTitle(paths);
-                            }}
-                            className="map"e
+                                        let paths = document.querySelectorAll('path');
+                                        let g = document.querySelector('g');
+                                        this.editPaths(paths);
+                                    }
+                            }
+                            className="map"
                             style={{width: '1009px', height: '665px', background: '#161C2E',}}
                         />
+                        {autoComplete}
                     </div>
                     <div className="row">
                         <Info id={this.state.id} title={this.state.title}/>
