@@ -96,6 +96,7 @@ class Map extends React.Component{
         //onSelect={value => this.setState({ value: value, title: value})}
         const autoComplete = (this.state.countries != null) ?
         <ReactAutocomplete
+                    className="autocomplete"
                     items={this.state.countries}
                     shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
                     getItemValue={item => item.label}
@@ -107,6 +108,7 @@ class Map extends React.Component{
                             backgroundColor: highlighted ? '#161C2E' : 'transparent',
                             color: highlighted ? '#EF6C35' : '#161C2E',
                             padding: '5px',
+                            zIndex: 10,
                         }}>
                         {item.label}
                       </div>
