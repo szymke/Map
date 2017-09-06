@@ -31,6 +31,14 @@ class Map extends React.Component{
             let path = document.getElementById(this.state.id);
             if(path){
                 path.classList.add('fill');
+                const w = path.getBoundingClientRect().width;
+                const h = path.getBoundingClientRect().height;
+                if(w * h < 300){
+                    console.log(w*h);
+                //    path.classList.add('zoom');
+                    path.setAttribute("viewBox", '100 100 100 100')
+
+                }
             }
         }
     }
@@ -48,6 +56,13 @@ class Map extends React.Component{
             });
             if(path != null){
                 path.classList.add('fill');
+                const w = path.getBoundingClientRect().width;
+                const h = path.getBoundingClientRect().height;
+                if(w * h < 300){
+                    console.log(w*h);
+            //        path.classList.add('zoom');
+                    path.setAttribute("viewBox", '100 100 100 100')
+                }
             };
         }
     }
@@ -61,8 +76,16 @@ class Map extends React.Component{
                 title: value,
                 value: value,
             });
+
             if(path != null){
                 path.classList.add('fill');
+                const w = path.getBoundingClientRect().width;
+                const h = path.getBoundingClientRect().height;
+                if(w * h < 300){
+                    console.log(w*h);
+                //    path.classList.add('zoom');
+                    path.setAttribute("viewBox", '100 100 100 100');
+                }
             };
         }
     }
@@ -96,33 +119,33 @@ class Map extends React.Component{
         //onSelect={value => this.setState({ value: value, title: value})}
         const autoComplete = (this.state.countries != null) ?
         <ReactAutocomplete
-                    className="autocomplete"
-                    items={this.state.countries}
-                    shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
-                    getItemValue={item => item.label}
-                    inputProps={{placeholder: 'Search'}}
-                    renderItem={(item, highlighted) =>
-                      <div
-                        key={item.id}
-                        style={{
-                            backgroundColor: highlighted ? '#161C2E' : 'transparent',
-                            color: highlighted ? '#EF6C35' : '#161C2E',
-                            padding: '5px',
-                            zIndex: 10,
-                        }}>
-                        {item.label}
-                      </div>
-                    }
-                    value={this.state.value}
-                    onChange={this.handleInputSearch}
-                    onSelect={value => {this.handleOnSelect(value)}}
-                    /> : null;
+            className="autocomplete"
+            items={this.state.countries}
+            shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
+            getItemValue={item => item.label}
+            inputProps={{placeholder: 'Search'}}
+            renderItem={(item, highlighted) =>
+              <div
+                key={item.id}
+                style={{
+                    backgroundColor: highlighted ? '#161C2E' : 'transparent',
+                    color: highlighted ? '#EF6C35' : '#161C2E',
+                    padding: '5px',
+                    zIndex: 10,
+                }}>
+                {item.label}
+              </div>
+            }
+            value={this.state.value}
+            onChange={this.handleInputSearch}
+            onSelect={value => {this.handleOnSelect(value)}}
+            /> : null;
 
 
         return  <div className='container'>
                     <div className="row" onClick={this.handleMapClick}>
                         <ReactSVG
-                            path="../images/worldHigh.svg"
+                            path="images/worldHigh.svg"
                             callback={svg => {
                                         let paths = document.querySelectorAll('path');
                                         let g = document.querySelector('g');

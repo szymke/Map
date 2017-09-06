@@ -22523,6 +22523,13 @@ var Map = function (_React$Component) {
                 });
                 if (path != null) {
                     path.classList.add('fill');
+                    var w = path.getBoundingClientRect().width;
+                    var h = path.getBoundingClientRect().height;
+                    if (w * h < 300) {
+                        console.log(w * h);
+                        //        path.classList.add('zoom');
+                        path.setAttribute("viewBox", '100 100 100 100');
+                    }
                 };
             }
         };
@@ -22536,8 +22543,16 @@ var Map = function (_React$Component) {
                     title: value,
                     value: value
                 });
+
                 if (path != null) {
                     path.classList.add('fill');
+                    var w = path.getBoundingClientRect().width;
+                    var h = path.getBoundingClientRect().height;
+                    if (w * h < 300) {
+                        console.log(w * h);
+                        //    path.classList.add('zoom');
+                        path.setAttribute("viewBox", '100 100 100 100');
+                    }
                 };
             }
         };
@@ -22559,6 +22574,13 @@ var Map = function (_React$Component) {
                 var path = document.getElementById(this.state.id);
                 if (path) {
                     path.classList.add('fill');
+                    var w = path.getBoundingClientRect().width;
+                    var h = path.getBoundingClientRect().height;
+                    if (w * h < 300) {
+                        console.log(w * h);
+                        //    path.classList.add('zoom');
+                        path.setAttribute("viewBox", '100 100 100 100');
+                    }
                 }
             }
         }
@@ -22598,6 +22620,7 @@ var Map = function (_React$Component) {
             //onChange={e => this.setState({ value: e.target.value })}
             //onSelect={value => this.setState({ value: value, title: value})}
             var autoComplete = this.state.countries != null ? _react2.default.createElement(_reactAutocomplete2.default, {
+                className: 'autocomplete',
                 items: this.state.countries,
                 shouldItemRender: function shouldItemRender(item, value) {
                     return item.label.toLowerCase().indexOf(value.toLowerCase()) > -1;
@@ -22614,7 +22637,8 @@ var Map = function (_React$Component) {
                             style: {
                                 backgroundColor: highlighted ? '#161C2E' : 'transparent',
                                 color: highlighted ? '#EF6C35' : '#161C2E',
-                                padding: '5px'
+                                padding: '5px',
+                                zIndex: 10
                             } },
                         item.label
                     );
@@ -22633,7 +22657,7 @@ var Map = function (_React$Component) {
                     'div',
                     { className: 'row', onClick: this.handleMapClick },
                     _react2.default.createElement(_reactSvg2.default, {
-                        path: '../images/worldHigh.svg',
+                        path: 'images/worldHigh.svg',
                         callback: function callback(svg) {
                             var paths = document.querySelectorAll('path');
                             var g = document.querySelector('g');
